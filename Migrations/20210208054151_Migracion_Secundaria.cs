@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FrameWorkTutorial.Migrations
 {
-    public partial class CreatePersonaDB : Migration
+    public partial class Migracion_Secundaria : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,9 @@ namespace FrameWorkTutorial.Migrations
                     Nombres = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
                     Apellidos = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
                     FechaNacimiento = table.Column<DateTime>(type: "date", nullable: false),
-                    EstadoCivil = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false)
+                    EstadoCivil = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: false),
+                    Opcupacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Salario = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -22,7 +22,7 @@ namespace FrameWorkTutorial
     public partial class MainWindow : Window
     {
         string[] estado = { "Soltero", "Casado", "Union Libre" };
-        private Persona persona = new Persona();
+        private Personas persona = new Personas();
         public MainWindow()
         {
             InitializeComponent();
@@ -84,14 +84,14 @@ namespace FrameWorkTutorial
 
         public void Limpiar()
         {
-            persona = new Persona();
+            persona = new Personas();
             this.DataContext = persona;
         }
 
-        public List<Persona> GetPersonas()
+        public List<Personas> GetPersonas()
         {
 
-            var persona1 = new Persona()
+            var persona1 = new Personas()
             {
                 Cedula = "2",
                 Nombres = "Juan",
@@ -100,7 +100,7 @@ namespace FrameWorkTutorial
                 EstadoCivil = "Casado"
             };
 
-            var persona2 = new Persona()
+            var persona2 = new Personas()
             {
                 Cedula = "3",
                 Nombres = "Raul",
@@ -109,7 +109,7 @@ namespace FrameWorkTutorial
                 EstadoCivil = "Casado"
             };
 
-            var persona3 = new Persona()
+            var persona3 = new Personas()
             {
                 Cedula = "4",
                 Nombres = "Saul",
@@ -118,7 +118,7 @@ namespace FrameWorkTutorial
                 EstadoCivil = "Casado"
             };
 
-            var persona4 = new Persona()
+            var persona4 = new Personas()
             {
                 Cedula = "5",
                 Nombres = "Pablo",
@@ -127,7 +127,7 @@ namespace FrameWorkTutorial
                 EstadoCivil = "Casado"
             };
 
-            var persona5 = new Persona()
+            var persona5 = new Personas()
             {
                 Cedula = "6",
                 Nombres = "Pedro",
@@ -136,7 +136,7 @@ namespace FrameWorkTutorial
                 EstadoCivil = "Casado"
             };
 
-            var persona6 = new Persona()
+            var persona6 = new Personas()
             {
                 Cedula = "7",
                 Nombres = "Jose",
@@ -145,7 +145,7 @@ namespace FrameWorkTutorial
                 EstadoCivil = "Casado"
             };
 
-            var persona7 = new Persona()
+            var persona7 = new Personas()
             {
                 Cedula = "8",
                 Nombres = "Steve",
@@ -154,7 +154,7 @@ namespace FrameWorkTutorial
                 EstadoCivil = "Casado"
             };
 
-            List<Persona> lista = new List<Persona>()
+            List<Personas> lista = new List<Personas>()
             {
                 persona1,
                 persona2,
@@ -168,7 +168,7 @@ namespace FrameWorkTutorial
             return lista;
         }
 
-        public async Task<bool> GuardarLista(List<Persona> personas)
+        public async Task<bool> GuardarLista(List<Personas> personas)
         {
             bool ok = false;
  

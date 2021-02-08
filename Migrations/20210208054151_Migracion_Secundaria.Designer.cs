@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FrameWorkTutorial.Migrations
 {
     [DbContext(typeof(PersonasDBContext))]
-    [Migration("20210208013423_CreatePersonaDB")]
-    partial class CreatePersonaDB
+    [Migration("20210208054151_Migracion_Secundaria")]
+    partial class Migracion_Secundaria
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,7 @@ namespace FrameWorkTutorial.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("FrameWorkTutorial.Models.Persona", b =>
+            modelBuilder.Entity("FrameWorkTutorial.Models.Personas", b =>
                 {
                     b.Property<string>("Cedula")
                         .HasMaxLength(15)
@@ -49,6 +49,12 @@ namespace FrameWorkTutorial.Migrations
                         .HasMaxLength(100)
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Opcupacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Cedula");
 

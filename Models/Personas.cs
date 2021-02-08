@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FrameWorkTutorial.Models
 {
-    public partial class Persona
+    public partial class Personas
     {
         public string Cedula { get; set; }
         public string Nombres { get; set; }

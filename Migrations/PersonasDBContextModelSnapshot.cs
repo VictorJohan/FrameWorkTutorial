@@ -20,7 +20,7 @@ namespace FrameWorkTutorial.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("FrameWorkTutorial.Models.Persona", b =>
+            modelBuilder.Entity("FrameWorkTutorial.Models.Personas", b =>
                 {
                     b.Property<string>("Cedula")
                         .HasMaxLength(15)
@@ -47,6 +47,12 @@ namespace FrameWorkTutorial.Migrations
                         .HasMaxLength(100)
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Opcupacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salario")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Cedula");
 

@@ -17,7 +17,7 @@ namespace FrameWorkTutorial.Models
         {
         }
 
-        public virtual DbSet<Persona> Personas { get; set; }
+        public virtual DbSet<Personas> Personas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,7 +32,7 @@ namespace FrameWorkTutorial.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
-            modelBuilder.Entity<Persona>(entity =>
+            modelBuilder.Entity<Personas>(entity =>
             {
                 entity.HasKey(e => e.Cedula);
 
@@ -59,6 +59,9 @@ namespace FrameWorkTutorial.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
             });
+
+            modelBuilder.Entity<Personas>().Property<string>("Opcupacion");
+            modelBuilder.Entity<Personas>().Property<decimal>("Salario");
 
             OnModelCreatingPartial(modelBuilder);
         }
