@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FrameWorkTutorial"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Registro" Height="330" Width="370" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+            <Label Content="Cedula" FontSize="11"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="CedulaTextBox" Width="250" Text="{Binding Cedula}" Height="20" HorizontalAlignment="Left" Margin="5,0"/>
+                <Button Name="BuscarButton" Content="Buscar" Width="60" Height="20" Click="BuscarButton_Click"/>
+            </StackPanel>
 
+            <Label Content="Nombres" FontSize="11"/>
+            <TextBox Name="NombresTextBox" Margin="5,0" Text="{Binding Nombres}" Width="315" Height="20" HorizontalAlignment="Left"/>
+
+            <Label Content="Apellidos" FontSize="11"/>
+            <TextBox Name="ApellidosTextBox" Margin="5,0" Text="{Binding Apellidos}" Width="315" Height="20" HorizontalAlignment="Left"/>
+
+            <Label Content="Fecha Nacimiento" FontSize="11"/>
+            <DatePicker Name="FechaNacimientoDatePicker" Margin="5,0" SelectedDate="{Binding FechaNacimiento}" Width="315" Height="20" Padding="-1" HorizontalAlignment="Left"/>
+
+            <Label Content="Estado Civil" FontSize="11"/>
+            <ComboBox Name="EstadoCivilComboBox" Margin="5,0" SelectedValue="{Binding EstadoCivil}" Width="315" Height="20"  HorizontalAlignment="Left"/>
+
+            <StackPanel Orientation="Horizontal" Width="223" Margin="0, 20">
+                <!--Nuevo-->
+                <Button Name="NuevoButton" Content="Nuevo" Width="60" Height="20" Click="NuevoButton_Click"/>
+                <!--Guardar-->
+                <Button Name="GuardarButton" Height="20" Width="60" Content="Guardar" Click="GuardarButton_Click" Margin="5,0,0,0"/>
+                <!--Eliminar-->
+                <Button Name="EliminarButton" Height="20" Width="60" Content="Eliminar"  Click="EliminarButton_Click" Margin="5,0,0,0"/>
+
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Window>
