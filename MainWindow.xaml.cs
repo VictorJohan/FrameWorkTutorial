@@ -28,14 +28,14 @@ namespace FrameWorkTutorial
             InitializeComponent();
             this.DataContext = persona;
             EstadoCivilComboBox.ItemsSource = estado;
-            
+
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             var Context = new PersonasDBContext();
             var registro = Context.Personas.Find(persona.Cedula);
-            if(registro != null)
+            if (registro != null)
             {
                 persona = registro;
                 this.DataContext = persona;
@@ -48,10 +48,16 @@ namespace FrameWorkTutorial
             Limpiar();
         }
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        private async void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
-            var Context = new PersonasDBContext();
-            if(Context.Personas.Any(p => p.Cedula == persona.Cedula))
+            var ListaRegistros = GetPersonas();
+            
+            if (await GuardarLista(ListaRegistros)){
+                MessageBox.Show("Registro Guardados");
+            }
+
+            /*var Context = new PersonasDBContext();
+            if (Context.Personas.Any(p => p.Cedula == persona.Cedula))
             {
                 Context.Personas.Update(persona);
                 if (Context.SaveChanges() > 0)
@@ -63,8 +69,8 @@ namespace FrameWorkTutorial
                 if (Context.SaveChanges() > 0)
                     Limpiar();
             }
-            Context.Dispose();
-            
+            Context.Dispose();*/
+
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
@@ -80,6 +86,100 @@ namespace FrameWorkTutorial
         {
             persona = new Persona();
             this.DataContext = persona;
+        }
+
+        public List<Persona> GetPersonas()
+        {
+
+            var persona1 = new Persona()
+            {
+                Cedula = "2",
+                Nombres = "Juan",
+                Apellidos = "Ramirez",
+                FechaNacimiento = DateTime.Now,
+                EstadoCivil = "Casado"
+            };
+
+            var persona2 = new Persona()
+            {
+                Cedula = "3",
+                Nombres = "Raul",
+                Apellidos = "Perez",
+                FechaNacimiento = DateTime.Now,
+                EstadoCivil = "Casado"
+            };
+
+            var persona3 = new Persona()
+            {
+                Cedula = "4",
+                Nombres = "Saul",
+                Apellidos = "Allahu akbar",
+                FechaNacimiento = DateTime.Now,
+                EstadoCivil = "Casado"
+            };
+
+            var persona4 = new Persona()
+            {
+                Cedula = "5",
+                Nombres = "Pablo",
+                Apellidos = "Robles",
+                FechaNacimiento = DateTime.Now,
+                EstadoCivil = "Casado"
+            };
+
+            var persona5 = new Persona()
+            {
+                Cedula = "6",
+                Nombres = "Pedro",
+                Apellidos = "Suarez",
+                FechaNacimiento = DateTime.Now,
+                EstadoCivil = "Casado"
+            };
+
+            var persona6 = new Persona()
+            {
+                Cedula = "7",
+                Nombres = "Jose",
+                Apellidos = "Holmes",
+                FechaNacimiento = DateTime.Now,
+                EstadoCivil = "Casado"
+            };
+
+            var persona7 = new Persona()
+            {
+                Cedula = "8",
+                Nombres = "Steve",
+                Apellidos = "Escobar",
+                FechaNacimiento = DateTime.Now,
+                EstadoCivil = "Casado"
+            };
+
+            List<Persona> lista = new List<Persona>()
+            {
+                persona1,
+                persona2,
+                persona3,
+                persona4,
+                persona5,
+                persona6,
+                persona7
+            };
+
+            return lista;
+        }
+
+        public async Task<bool> GuardarLista(List<Persona> personas)
+        {
+            bool ok = false;
+ 
+            var Context = new PersonasDBContext();
+            foreach (var item in personas)
+            {
+                Context.Personas.UpdateRange(item);
+                ok = await Context.SaveChangesAsync() > 0;         
+            }
+            await Context.DisposeAsync();
+            return ok;
         }
     }
 }
